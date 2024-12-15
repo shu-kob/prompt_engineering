@@ -8,7 +8,9 @@ vertexai.init(project=project_id, location="asia-northeast1")
 model = GenerativeModel("gemini-1.5-flash-002")
 
 response = model.generate_content(
-  "プロンプトエンジニアリングとは"
+  messages=[
+    {"role": "user", "content": "プロンプトエンジニアリングとは"},
+  ],
 )
 
 print(response.text)
