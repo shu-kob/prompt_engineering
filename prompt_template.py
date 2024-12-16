@@ -1,26 +1,18 @@
 from langchain_core.prompts import PromptTemplate
-from langchain_google_vertexai import VertexAI, HarmBlockThreshold, HarmCategory
+from langchain_google_vertexai import VertexAI
 
-safety_settings = {
-    HarmCategory.HARM_CATEGORY_UNSPECIFIED: HarmBlockThreshold.BLOCK_NONE,
-    HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
-    HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
-    HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
-    HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
-}
+llm = VertexAI(model_name="gemini-1.5-flash-002")
 
-llm = VertexAI(model_name="gemini-1.5-flash-002", safety_settings=safety_settings)
+template = """質問: {question}
 
-template = """Question: {question}
-
-Answer: Let's think step by step."""
+ステップバイステップで考えてください。"""
 
 prompt_template = PromptTemplate.from_template(template)
 
 chain = prompt_template | llm
 
 question = """
-I have five apples. I throw two away. I eat one. How many apples do I have left?
+10 + 2 * 3 - 4 * 2
 """
 print(chain.invoke({"question": question}))
 
