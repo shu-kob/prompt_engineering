@@ -1,7 +1,7 @@
 import vertexai
 from vertexai.generative_models import GenerativeModel
 
-project_id = "pristine-nomad-424014-d7" # 書き換える
+project_id = "PROJECT_ID" # 書き換える
 
 vertexai.init(project=project_id, location="asia-northeast1")
 
