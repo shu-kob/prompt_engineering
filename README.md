@@ -4,4 +4,4 @@
 
 - [ハンズオン資料](https://shu-kob.hateblo.jp/entry/2024/12/17/185729)
 
-- [アーカイブ動画](https://genai-users.connpass.com/event/338662/)
+- [アーカイブ動画](https://www.youtube.com/watch?v=lSvsmQEs6ew)
